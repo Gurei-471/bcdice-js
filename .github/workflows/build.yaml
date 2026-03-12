@@ -19,7 +19,7 @@ jobs:
         with:
           ruby-version: '3.4'
           bundler-cache: true
-
+          cache-version: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
