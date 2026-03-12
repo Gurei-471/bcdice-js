@@ -40,7 +40,12 @@ jobs:
           git checkout -B dist
           git rm -rf .
 
-          git add -f examples/ lib/ ts/ LICENSE README.md package.json
+          git add examples/
+          git add -f lib/
+          git add ts/
+          git add LICENSE
+          git add README.md
+          git add package.json
 
           git commit -m "Auto-deploy build results" || echo "Nothing to commit"
           git push origin dist --force
