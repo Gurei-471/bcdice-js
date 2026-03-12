@@ -38,13 +38,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -B dist
+          git rm -rf .
 
-          git add examples/
-          git add -f lib/
-          git add ts/
-          git add LICENSE
-          git add README.md
-          git add package.json
+          cp -r examples/ lib/ ts/ .
+          cp LICENSE README.md package.json .
+
+          git add -f examples/ lib/ ts/ LICENSE README.md package.json
 
           git commit -m "Auto-deploy build results" || echo "Nothing to commit"
           git push origin dist --force
