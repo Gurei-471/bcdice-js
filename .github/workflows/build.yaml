@@ -40,9 +40,6 @@ jobs:
           git checkout -B dist
           git rm -rf .
 
-          cp -r examples/ lib/ ts/ .
-          cp LICENSE README.md package.json .
-
           git add -f examples/ lib/ ts/ LICENSE README.md package.json
 
           git commit -m "Auto-deploy build results" || echo "Nothing to commit"
