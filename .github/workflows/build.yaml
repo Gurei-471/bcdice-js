@@ -46,5 +46,5 @@ jobs:
           git add README.md
           git package.json
 
-          git commit -m "Auto-deploy build results"
+          git commit -f -m "Auto-deploy build results"
           git push origin dist --force
