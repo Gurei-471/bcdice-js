@@ -17,13 +17,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0'
+          ruby-version: '2.7'
           bundler-cache: true
           cache-version: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          node-version: '14'
           cache: 'npm'
 
       - name: Build
