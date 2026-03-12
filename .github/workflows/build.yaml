@@ -1,0 +1,49 @@
+name: Build bcdice-js
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Build
+        run: |
+          bundle install
+          npm install
+          npm run build
+
+      - name: Deploy to Branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -B dist
+
+          git add examples/
+          git add lib/
+          git add ts/
+          git add LICENSE
+          git add README.md
+          git package.json
+
+          git commit -m "Auto-deploy build results"
+          git push origin dist --force
