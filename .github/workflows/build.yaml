@@ -37,15 +37,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git checkout -B dist
-          git rm -rf .
+          mkdir ../temp_build
+          cp -r examples lib ts LICENSE README.md package.json ../temp_build/
 
-          git add examples/
-          git add -f lib/
-          git add ts/
-          git add LICENSE
-          git add README.md
-          git add package.json
+          git checkout -B dist
+          find . -maxdepth 1 ! -name '.git' ! -name '..' ! -name '.' -exec rm -rf {} +
+
+          cp -r ../temp_build/* .
+          git add -f .
 
           git commit -m "Auto-deploy build results" || echo "Nothing to commit"
           git push origin dist --force
