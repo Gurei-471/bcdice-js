@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build:
@@ -44,7 +45,7 @@ jobs:
           find . -maxdepth 1 ! -name '.git' ! -name '..' ! -name '.' -exec rm -rf {} +
 
           cp -r ../temp_build/* .
-          git add -f .
+          git add .
 
           git commit -m "Auto-deploy build results" || echo "Nothing to commit"
           git push origin dist --force
