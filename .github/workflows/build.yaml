@@ -33,19 +33,7 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy to Branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          mkdir ../temp_build
-          cp -r examples lib ts LICENSE README.md package.json ../temp_build/
-
-          git checkout -B dist
-          find . -maxdepth 1 ! -name '.git' ! -name '..' ! -name '.' -exec rm -rf {} +
-
-          cp -r ../temp_build/* .
-          git add .
-
-          git commit -m "Auto-deploy build results" || echo "Nothing to commit"
-          git push origin dist --force
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

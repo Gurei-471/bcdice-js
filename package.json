@@ -1,24 +1,28 @@
 {
-  "name": "bcdice",
+  "name": "@gurei-471/bcdice-js",
   "version": "4.9.0",
   "description": "BCDice ported for JavaScript",
   "keywords": [
     "dice"
   ],
-  "homepage": "https://github.com/bcdice/bcdice-js#readme",
+  "homepage": "https://github.com/Gurei-471/bcdice-js#readme",
   "bugs": {
-    "url": "https://github.com/bcdice/bcdice-js/issues"
+    "url": "https://github.com/Gurei-471/bcdice-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcdice/bcdice-js.git"
+    "url": "git+https://github.com/Gurei-471/bcdice-js.git"
   },
   "license": "BSD-3-Clause",
-  "author": "bcdice",
+  "author": "bcdice, Gurei-471",
   "engines": {
     "node": ">=22"
   },
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
+  },
   "files": [
     "examples",
     "lib",
