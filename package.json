@@ -20,7 +20,7 @@
   },
   "main": "lib/index.js",
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
